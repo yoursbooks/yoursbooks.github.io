@@ -7,12 +7,12 @@
             font-family: Arial, sans-serif;
             background-color: #f2f2f2;
         }
-        
+
         h1 {
             text-align: center;
             color: #333;
         }
-        
+
         #book {
             max-width: 800px;
             margin: 0 auto;
@@ -21,172 +21,57 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             padding: 20px;
         }
-        
-        #book .chapter {
+
+        .chapter {
             margin-bottom: 20px;
         }
-        
-        #book .chapter h2 {
+
+        .chapter h2 {
             font-size: 24px;
             margin-bottom: 10px;
         }
-        
-        #book .chapter p {
+
+        .chapter p {
             font-size: 16px;
             line-height: 1.5;
             margin-bottom: 10px;
             text-indent: 2em;
         }
-        
-        #book .chapter p.highlight {
-            background-color: yellow;
-        }
-        
-        #pagination {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 20px;
-        }
-        
-        #pagination button {
-            font-size: 16px;
-            padding: 10px;
-            margin-right: 10px;
-            border: none;
-            background-color: #f2f2f2;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        
-        #search {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 20px;
-        }
-        
-        #search input[type="text"] {
-            flex-grow: 1;
-            font-size: 16px;
-            padding: 10px;
-            margin-right: 10px;
-            border: none;
-            background-color: #f2f2f2;
-            border-radius: 5px;
-            outline: none;
-        }
-        
-        #search button {
-            font-size: 16px;
-            padding: 10px;
-            border: none;
-            background-color: #f2f2f2;
-            border-radius: 5px;
-            cursor: pointer;
-        }
     </style>
-    <script>
-        let currentPage = 1;
-        
-        function showPage(page) {
-            // 显示指定页码的内容
-            const chapters = document.querySelectorAll('#book .chapter');
-            for (let i = 0; i < chapters.length; i++) {
-                if (i >= (page - 1) * 3 && i < page * 3) {
-                    chapters[i].style.display = 'block';
-                } else {
-                    chapters[i].style.display = 'none';
-                }
-            }
-        }
-        
-        function nextPage() {
-            // 显示下一页的内容
-            currentPage++;
-            showPage(currentPage);
-            updatePagination();
-        }
-        
-        function prevPage() {
-            // 显示上一页的内容
-            currentPage--;
-            showPage(currentPage);
-            updatePagination();
-        }
-        
-        function updatePagination() {
-            // 更新分页按钮状态
-            const prevButton = document.querySelector('#pagination button:first-of-type');
-            const nextButton = document.querySelector('#pagination button:last-of-type');
-            if (currentPage === 1) {
-                prevButton.disabled = true;
-            } else {
-                prevButton.disabled = false;
-            }
-            const chapters = document.querySelectorAll('#book .chapter');
-            const totalPages = Math.ceil(chapters.length / 3);
-            if (currentPage === totalPages) {
-                nextButton.disabled = true;
-            } else {
-                nextButton.disabled = false;
-            }
-        }
-        
-        function search() {
-            // 查找关键字并高亮显示
-            const keyword = document.querySelector('#search input[type="text"]').value;
-            const chapters = document.querySelectorAll('#book .chapter');
-            for (let i = 0; i < chapters.length; i++) {
-                const chapterTitle = chapters[i].querySelector('h2').textContent;
-                const paragraphs = chapters[i].querySelectorAll('p');
-                for (let j = 0; j < paragraphs.length; j++) {
-                    const paragraphText = paragraphs[j].textContent;
-                    if (paragraphText.includes(keyword)) {
-                        paragraphs[j].classList.add('highlight');
-                    } else {
-                        paragraphs[j].classList.remove('highlight');
-                    }
-                }
-            }
-        }
-    </script>
 </head>
 <body>
     <h1>我的电子书</h1>
     <div id="book">
-        <!-- 第一章 -->
-        <div class="chapter">
-            <h2>第一章：欢迎来到我的电子书</h2>
-            <p>这是我的电子书，我希望你能喜欢它。</p>
-            <p>如果你想翻到下一页，请点击下面的按钮：</p>
-            <div id="pagination">
-                <button onclick="prevPage()" disabled>&lt; 上一页</button>
-                <button onclick="nextPage()">下一页 &gt;</button>
-            </div>
-        </div>
-        
-        <!-- 第二章 -->
-        <div class="chapter">
-            <h2>第二章：如何使用这本电子书</h2>
-            <p>这本电子书非常容易使用，只需要点击下一页按钮即可。</p>
-            <p>你也可以使用搜索功能，查找特定的关键字：</p>
-            <div id="search">
-                <input type="text" placeholder="输入关键字">
-                <button onclick="search()">搜索</button>
-            </div>
-        </div>
-        
-        <!-- 第三章 -->
-        <div class="chapter">
-            <h2>第三章：感谢您的阅读</h2>
-            <p>感谢您阅读我的电子书，我希望您能从中获得乐趣。</p>
+        <div class="chapter">马
+
+爽
+
+一个人，一只虫。一个背着生活重负的人，一只背着沉重躯壳的虫。当身背重负的人突然有一天变成了身背甲壳的虫，他内心的重负会消解么？当这个变成了虫的人用“虫眼观世界”的时候，他又看到了什么？小说《变形记》给出了这些问题的答案，读完之后令人唏嘘不已。
+
+《变形记》作者是奥地利小说家弗朗茨·卡夫卡（1883—1924）。他被誉为“现代派文学的先驱”、“现代派小说的鼻祖”，也被公认为具有病态才华的世界文坛巨匠。美国剧作家奥登说过：“就作家及其所处时代的关系而论，当代能与但丁、莎士比亚和歌德相提并论的第一人便是卡夫卡……卡夫卡对我们至关重要，因为他的困惑就是现代人的困惑。”可以说卡夫卡的每部作品都像是一个谜，而《变形记》则是他最精彩、最典型的一个谜！
+
+初读《变形记》，除了感受到人变虫的荒诞之外，很难体会到作品的深度和特别之处。若要真正读懂一部作品，了解作者本身无疑是一个重要的切入点。特别像卡夫卡这样受到生长、生存环境影响特别大的人，他们的作品在很大程度上就是他们生活的真实写照。
+
+卡夫卡生于捷克（当时属奥匈帝国）首府布拉格一个犹太商人家庭，是家中长子，有三个妹妹（另有两个早夭的弟弟）。他自幼爱好文学、戏剧，18岁进入布拉格大学，初习化学、文学，后习法律，获博士学位。毕业后，在保险公司任职。三次订婚，又三次退婚，因而终生未娶，41岁时死于肺痨。
+
+父亲原是一个半行乞的乡下屠夫的儿子，后来积蓄了一份财产，成为中等阶级的服饰品商人，以后又当上了小工厂的老板，为人自信而偏执。他一心要把卡夫卡培养成当之无愧的继承人，尽管卡夫卡全然无心于此。这使卡夫卡觉得他同父亲的斗争仿佛就是他的全部生活，也是生活的全部意义。对父亲的敬畏和恐惧感伴随他成长，令人窒息的家庭环境使他从小就形成了忧郁内向、孤僻自闭的性格。这影响着他短暂一生的文学创作。
+
+36岁时卡夫卡曾给父亲写过一封长信，试图回答他为什么畏惧他，但他写信时战战兢兢，结果无法充分地表达自己恐惧的意思。当然，他也没有胆量亲自将这封信交给他父亲，而他母亲在读过信后更是觉得不宜将信给他父亲看。在信中，卡夫卡写道：
+
+“在我的眼里世界就分成三个部分。我，是个奴隶，生活在其中的一个世界，受着种种法律的约束，这些法律是单为我发明的。而我，不知为什么，却始终不能完全守法。然后就是第二个世界，它离我的世界无限遥远，这就是您的世界，您行使着统治权，发号施令并且还因您的命令得不到执行烦恼生气。最后还有那第三个世界，其余的人都在那儿过着幸福而自由自在的生活，没有人发号施令，也没有人唯命是从。我夹在中间左右为难。”
+
+这便是卡夫卡的三个世界：我（奴隶）的世界、父亲（统治者）的世界和其余人幸福自由的世界。卡夫卡夹在这个被撕裂的世界中，既不能前进，又无法后退。他的压抑可想而知。卡夫卡与母亲的关系也纠缠在爱与不可理解之中，这种关系尤其使人痛苦。卡夫卡在一封信中写道：“母亲对我的爱正如她对我的不理解一样深，这种不理解融进了她的爱之中，因而，她也许就更加无所顾忌，这是我目前所不能理解的。”
+
+1912年至1915年，卡夫卡终于完成了堪称表现主义流派代表作的短篇小说《变形记》——它当之无愧地成了这位伟大作家系列短篇小说中一颗熠熠生辉的明珠。小说叙述了主人公格里高尔的不幸境遇和悲惨结局。这部小说不论题材选择、表达手法，还是结构布局，都深深地烙上了寓言的印记。
+
+故事以一天早晨，在某公司任旅行推销员的格里高尔一觉醒来，突然发现自己变成了一只大甲虫，在惊愕的亲人面前，格里高尔一下子感到自己被抛入了另一个世界为开场白，他作为一个“人”所具有和应该享有的一切都被剥夺了。他不仅丢了职业，还落得人见人烦的下场，甚至父母妹妹也嫌弃他，把他看成一个沉重的家庭负担。尽管他变形前工作努力、待人友善，尽管他为养家拼死拼活，可是变形后，他却不断地体会到人心冷漠、世态炎凉，使得他的心灵和肉体都在滴血，最后在孤独和无助中活活饿死。
+
+《变形记》最突出的表现手法就是夸张变形法。格里高尔早晨醒来突然异化成了一只大甲虫，它的背“坚硬得仿佛穿了恺甲”，“弯顶似的棕色肚子分成了好多块弧形的硬片”，“无数只腿与身躯一比，真是细得可怜。”还喜欢吃腐烂食物，在印花墙纸和天花板上乱爬。它又具有人的记忆、思维、理解等能力。这在现实中显然是不可能的。这无疑是卡夫卡在创作中的一种大胆独特的夸张变形手法。小说通过人变成了另一种物（甲虫），使这个具有自然界甲虫某些属性的格里高尔形象与现实生活中理应具有人的属性的格里高尔形象拉开了距离。这又是一般寓言中寓言形象与现实生活必须保持适度距离这一特殊要求所需要的。
+
+现代派文学与寓言创作的紧密结合，即现代派文学呈现出明显的寓言化倾向，构成了20世纪文学创作的一大显著特点。寓言一向被看成是“作者另有寄托的故事”。故事性和寄托性是寓言的两大因素，寓体的寓意则是寓言必不可少的两个组成部分。卡夫卡的《变形记》明显具有寓言这种双重性结构特征，即它由两部分组成——寓体和寓意。
+
+《变形记》的故事表面显得十分荒诞，但实际却真实地反映了很多活在这个世界上的人的无奈与悲哀。如果说主人公的变形还只是形体上的变形，那么那些形体依然完好的人却是心理在变形、人性在变形。卡夫卡以高超的写作技巧和深邃的思想高度让这个扭曲的世界中扭曲的灵魂得到了全面的展现。
         </div>
     </div>
-    
-    <script>
-        showPage(currentPage);
-        updatePagination();
-    </script>
 </body>
 </html>
