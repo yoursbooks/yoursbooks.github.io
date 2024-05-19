@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>书架</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        
+        .bookshelf {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .book {
+            width: 150px;
+            height: 200px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        .book img {
+            max-width: 80%;
+            max-height: 80%;
+        }
+        
+        .book p {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #777;
+        }
+        
+        .book a {
+            text-decoration: none;
+            color: #333;
+        }
+    </style>
+    <script>
+        function showBookDetails(bookTitle) {
+            // 根据书籍标题显示详细信息
+            alert("你点击了书籍：" + bookTitle);
+        }
+    </script>
+</head>
+<body>
+    <h1>我的书架</h1>
+    <div class="bookshelf">
+        <div class="book" onclick="showBookDetails('Book 1')">
+            <img src="book1.jpg" alt="Book 1">
+            <p>Book 1</p>
+        </div>
+        <div class="book" onclick="showBookDetails('Book 2')">
+            <img src="book2.jpg" alt="Book 2">
+            <p>Book 2</p>
+        </div>
+        <div class="book" onclick="showBookDetails('Book 3')">
+            <img src="book3.jpg" alt="Book 3">
+            <p>Book 3</p>
+        </div>
+        <!-- 添加更多书籍 -->
+    </div>
+</body>
+</html>
