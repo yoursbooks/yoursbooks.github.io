@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>我的电子书</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        
+        #book {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        
+        #book .chapter {
+            margin-bottom: 20px;
+        }
+        
+        #book .chapter h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        #book .chapter p {
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 10px;
+            text-indent: 2em;
+        }
+        
+        #book .chapter p.highlight {
+            background-color: yellow;
+        }
+        
+        #pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+        
+        #pagination button {
+            font-size: 16px;
+            padding: 10px;
+            margin-right: 10px;
+            border: none;
+            background-color: #f2f2f2;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        #search {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+        
+        #search input[type="text"] {
+            flex-grow: 1;
+            font-size: 16px;
+            padding: 10px;
+            margin-right: 10px;
+            border: none;
+            background-color: #f2f2f2;
+            border-radius: 5px;
+            outline: none;
+        }
+        
+        #search button {
+            font-size: 16px;
+            padding: 10px;
+            border: none;
+            background-color: #f2f2f2;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        let currentPage = 1;
+        
+        function showPage(page) {
+            // 显示指定页码的内容
+            const chapters = document.querySelectorAll('#book .chapter');
+            for (let i = 0; i < chapters.length; i++) {
+                if (i >= (page - 1) * 3 && i < page * 3) {
+                    chapters[i].style.display = 'block';
+                } else {
+                    chapters[i].style.display = 'none';
+                }
+            }
+        }
+        
+        function nextPage() {
+            // 显示下一页的内容
+            currentPage++;
+            showPage(currentPage);
+            updatePagination();
+        }
+        
+        function prevPage() {
+            // 显示上一页的内容
+            currentPage--;
+            showPage(currentPage);
+            updatePagination();
+        }
+        
+        function updatePagination() {
+            // 更新分页按钮状态
+            const prevButton = document.querySelector('#pagination button:first-of-type');
+            const nextButton = document.querySelector('#pagination button:last-of-type');
+            if (currentPage === 1) {
+                prevButton.disabled = true;
+            } else {
+                prevButton.disabled = false;
+            }
+            const chapters = document.querySelectorAll('#book .chapter');
+            const totalPages = Math.ceil(chapters.length / 3);
+            if (currentPage === totalPages) {
+                nextButton.disabled = true;
+            } else {
+                nextButton.disabled = false;
+            }
+        }
+        
+        function search() {
+            // 查找关键字并高亮显示
+            const keyword = document.querySelector('#search input[type="text"]').value;
+            const chapters = document.querySelectorAll('#book .chapter');
+            for (let i = 0; i < chapters.length; i++) {
+                const chapterTitle = chapters[i].querySelector('h2').textContent;
+                const paragraphs = chapters[i].querySelectorAll('p');
+                for (let j = 0; j < paragraphs.length; j++) {
+                    const paragraphText = paragraphs[j].textContent;
+                    if (paragraphText.includes(keyword)) {
+                        paragraphs[j].classList.add('highlight');
+                    } else {
+                        paragraphs[j].classList.remove('highlight');
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>我的电子书</h1>
+    <div id="book">
+        <!-- 第一章 -->
+        <div class="chapter">
+            <h2>第一章：欢迎来到我的电子书</h2>
+            <p>这是我的电子书，我希望你能喜欢它。</p>
+            <p>如果你想翻到下一页，请点击下面的按钮：</p>
+            <div id="pagination">
+                <button onclick="prevPage()" disabled>&lt; 上一页</button>
+                <button onclick="nextPage()">下一页 &gt;</button>
+            </div>
+        </div>
+        
+        <!-- 第二章 -->
+        <div class="chapter">
+            <h2>第二章：如何使用这本电子书</h2>
+            <p>这本电子书非常容易使用，只需要点击下一页按钮即可。</p>
+            <p>你也可以使用搜索功能，查找特定的关键字：</p>
+            <div id="search">
+                <input type="text" placeholder="输入关键字">
+                <button onclick="search()">搜索</button>
+            </div>
+        </div>
+        
+        <!-- 第三章 -->
+        <div class="chapter">
+            <h2>第三章：感谢您的阅读</h2>
+            <p>感谢您阅读我的电子书，我希望您能从中获得乐趣。</p>
+        </div>
+    </div>
+    
+    <script>
+        showPage(currentPage);
+        updatePagination();
+    </script>
+</body>
+</html>
